@@ -196,7 +196,8 @@ bool ZipCodeRecord::isWestOf(const ZipCodeRecord& other) const
 // Stream output operator
 std::ostream& operator<<(std::ostream& outputStream, const ZipCodeRecord& record)
 {
-    outputStream << std::fixed << std::setprecision(4)
+    //prints in format Zipcode, LocationName, State, County, (latitude, longituted)
+    outputStream << std::fixed << std::setprecision(4) 
        << "Zip: " << std::setw(5) << std::setfill('0') << record.zipCode
        << ", " << record.locationName
        << ", " << record.state 

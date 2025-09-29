@@ -91,7 +91,7 @@ void DataManager::printTable(std::ostream& os) const {
 
 std::string DataManager::signature() const {
     std::ostringstream oss;
-    std::map<std::string, Extremes> sorted(stateExtremes_.begin(), stateExtremes_.end());
+    std::map<std::string, Extremes> sorted(stateExtremes_.begin(), stateExtremes_.end()); 
     for (const auto& kv : sorted) {
         const std::string& state = kv.first;
         const Extremes& ex = kv.second;
