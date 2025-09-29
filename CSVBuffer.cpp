@@ -48,17 +48,17 @@ bool CSVBuffer::openFile(const std::string& filename)
 {
     closeFile();  // Close any existing file
     
-    csvFile.open(filename);
-    if (!csvFile.is_open()) 
+    csvFile.open(filename); //open files
+    if (!csvFile.is_open()) //if file couldn't be opened
     {
-        setError("Could not open file: " + filename);
-        return false;
+        setError("Could not open file: " + filename); //flag error
+        return false; //flag error
     }
     
-    lineNumber = 0;
-    recordsProcessed = 0;
-    errorState = false;
-    lastError = "";
+    lineNumber = 0; // sets line number to 0 representing being at the begining at the file
+    recordsProcessed = 0; //sets recordsProcessed to 0 meaning no records are processed
+    errorState = false; // sets error state to false because no error has happened yet
+    lastError = ""; 
     
     // Skip and validate header
     if (!skipHeader()) 
@@ -153,10 +153,11 @@ bool CSVBuffer::hasMoreRecords() const
  */
 void CSVBuffer::closeFile()
 {
-    if (csvFile.is_open()) 
+    if (csvFile.is_open()) //if file is open close the file
     {
-        csvFile.close();
+        csvFile.close(); 
     }
+    //reset flags
     lineNumber = 0;
     recordsProcessed = 0;
     errorState = false;
@@ -190,7 +191,7 @@ std::string CSVBuffer::getLastError() const
  */
 bool CSVBuffer::skipHeader()
 {
-    if (!csvFile.is_open()) 
+    if (!csvFile.is_open()) //if file isn't open flag error and return false
     {
         setError("File not open");
         return false;
@@ -318,9 +319,9 @@ void CSVBuffer::trimString(std::string& str)
  */
 bool CSVBuffer::isValidInteger(const std::string& str) const
 {
-    if (str.empty()) return false;
+    if (str.empty()) return false; //if string is empty, return false
     
-    try 
+    try //try to convert string to integer, return true if successfull
     {
         std::stoi(str);
         return true;
@@ -336,9 +337,9 @@ bool CSVBuffer::isValidInteger(const std::string& str) const
  */
 bool CSVBuffer::isValidDouble(const std::string& str) const
 {
-    if (str.empty()) return false;
+    if (str.empty()) return false; //if string is empty, return false
     
-    try 
+    try //try to convert string to double, return true if successfull
     {
         std::stod(str);
         return true;
@@ -354,6 +355,7 @@ bool CSVBuffer::isValidDouble(const std::string& str) const
  */
 void CSVBuffer::setError(const std::string& message)
 {
+    //set error flags
     errorState = true;
     lastError = message;
 }

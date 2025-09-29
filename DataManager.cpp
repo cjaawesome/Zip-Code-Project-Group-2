@@ -49,7 +49,7 @@ std::size_t DataManager::loadFromCsv(const std::string& csvPath) {
 
     buf.closeFile();
 
-    if (loaded == 0) {
+    if (loaded == 0) { // if no records could be loaded throw error
         throw std::runtime_error("No valid records loaded from: " + csvPath);
     }
     return loaded;

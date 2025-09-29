@@ -91,17 +91,17 @@ bool ZipCodeRecord::setZipCode(const int inZipCode)
 
 bool ZipCodeRecord::setLatitude(const double inLatitude)
 {
-    if (inLatitude >= -90.0 && inLatitude <= 90.0) 
+    if (inLatitude >= -90.0 && inLatitude <= 90.0) //if latitude is valid set latitude and return true
     {
         latitude = inLatitude;
         return true;
     }
-    return false;
+    return false; 
 }
 
 bool ZipCodeRecord::setLongitude(const double inLongitude)
 {
-    if (inLongitude >= -180.0 && inLongitude <= 180.0) 
+    if (inLongitude >= -180.0 && inLongitude <= 180.0) //if longitude is valid set longitute and return true
     {
         longitude = inLongitude;
         return true;
@@ -111,7 +111,7 @@ bool ZipCodeRecord::setLongitude(const double inLongitude)
 
 bool ZipCodeRecord::setLocationName(const std::string& inLocationName)
 {
-    if (!inLocationName.empty() && inLocationName.length() < 100) 
+    if (!inLocationName.empty() && inLocationName.length() < 100) //if name is valid length set name and return true
     {  
         locationName = inLocationName;
         return true;
@@ -133,7 +133,7 @@ bool ZipCodeRecord::setState(const std::string& inState)
 
 bool ZipCodeRecord::setCounty(const std::string& inCounty)
 {
-    if (!inCounty.empty() && inCounty.length() < 50) 
+    if (!inCounty.empty() && inCounty.length() < 50) //if county is valid length set county and return true
     {  
         county = inCounty;
         return true;
